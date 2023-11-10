@@ -1,0 +1,208 @@
+// 'use strict';
+
+// // Selecting elements 
+// let P1_score = document.querySelector("#score--0");
+// let P2_score = document.getElementById("score--1");
+
+// let Name1 = document.getElementById("name--0");
+// let Name2 = document.getElementById("name--1");
+
+// let Current_P1 = document.getElementById("current--0");
+// let Current_P2 = document.getElementById("current--1");
+
+
+// let diceRoller = document.querySelector(".btn--roll");
+// let holder = document.querySelector(".btn--hold");
+
+// let P1_BG = document.querySelector(".player--0");
+// let P2_BG = document.querySelector(".player--1");
+
+// P1_score.textContent = 0;
+// P2_score.textContent = 0;
+
+// let P1_total = 0;
+// let P2_total = 0;
+
+// let P1_Ctotal = 0;
+// let P2_Ctotal = 0;
+
+// let playercounter = 0;
+
+// console.log(P1_score);
+
+// let dicePic = document.querySelector(".dice");
+
+// dicePic.classList.add("none")
+
+// let P1_Num_Score = 0;
+// let P2_Num_Score = 0;
+
+// function randomNumgen() {
+//     let rand = Math.trunc(Math.random() * 6 + 1)
+//     return rand;
+// }
+
+// console.log(randomNumgen());
+
+// diceRoller.addEventListener("click", function () {
+//     // random number is changing everytime the function is being 
+//     // called so need to save the function for once 
+
+//     let randomNumber = randomNumgen();
+
+//     if (P1_Num_Score >= 20 || P2_Num_Score >= 20) {
+//         msg.textContent = "Start New Game";
+//         msg.classList.toggle("nbtn");
+//         msg.classList.toggle("none");
+//         blurBG.classList.toggle("overlay");
+//     }
+
+//     else {
+//         if (randomNumber === 1) {
+//             dicePic.src = `dice-${randomNumber}.png`;
+//             if (playercounter % 2 === 0) {
+//                 P1_total = 0;
+//                 P1_score.textContent = P1_total.toString();
+//                 Current_P1.textContent = "0";
+//             }
+
+//             else if (playercounter % 2 === 1) {
+//                 P2_total = 0;
+//                 P2_score.textContent = P2_total.toString();
+//                 Current_P2.textContent = "0";
+//             }
+//             changeplayer();
+//         }
+
+//         else {
+
+//             if (playercounter % 2 === 0) {
+//                 P1_total = randomNumber + P1_total;
+//                 Current_P1.textContent = P1_total.toString();
+//                 dicePic.src = `dice-${randomNumber}.png`;
+//             }
+
+//             else if (playercounter % 2 === 1) {
+//                 P2_total = randomNumber + P2_total;
+//                 Current_P2.textContent = P2_total.toString();
+//                 dicePic.src = `dice-${randomNumber}.png`;
+
+//             }
+//         }
+//     }
+
+//     dicePic.classList.remove("none");
+
+// });
+
+// //also need to note the player counter values so it can be used properly
+
+// function changeplayer() {
+//     ++playercounter;
+
+//     P1_Num_Score = P1_total + P1_Num_Score;
+//     P2_Num_Score = P2_total + P2_Num_Score;
+
+
+//     P1_score.textContent = P1_Num_Score.toString();
+//     P2_score.textContent = P2_Num_Score.toString();
+
+//     P1_total = 0;
+//     P2_total = 0;
+
+//     if (playercounter % 2 === 0 && P2_Num_Score < 20) {
+//         P1_BG.classList.add("player--active");
+//         P2_BG.classList.remove("player--active");
+//         Current_P2.textContent = "0";
+//     }
+
+//     else if (playercounter % 2 === 1 && P1_Num_Score < 20) {
+//         P2_BG.classList.add("player--active");
+//         P1_BG.classList.remove("player--active");
+//         Current_P1.textContent = "0";
+//     }
+// }
+
+// holder.addEventListener("click", function () {
+//     changeplayer();
+
+//     declareWinner(P1_Num_Score);
+//     declareWinner(P2_Num_Score);
+// });
+
+// function declareWinner(score) {
+//     //check after hold is clicked
+//     //bg colorchange after winner
+//     if (score >= 20) {
+//         ++playercounter;
+//         playercounter % 2 === 1 ? P2_BG.classList.add("winner") : P1_BG.classList.add("winner");
+//         playercounter % 2 === 1 ? Name2.textContent = "Winner !" : Name1.textContent = "Winner !";
+//         // P2_BG.classList.add("player--active");
+//         // P1_BG.classList.add("player--active");
+
+//         // P1_Num_Score = 100;
+//         // P2_Num_Score = 100;
+//     }
+// }
+
+// let newGame = document.querySelector(".btn--new");
+
+// let msg = document.querySelector(".msg-box");
+// let blurBG = document.querySelector(".bg");
+
+// msg.classList.toggle("nbtn");
+// msg.classList.toggle("none");
+// blurBG.classList.toggle("overlay");
+
+
+// newGame.addEventListener("click", function () {
+//     if (P1_Num_Score >= 20 || P2_Num_Score >= 20) {
+
+//         P1_Num_Score = 0;
+//         P2_Num_Score = 0;
+
+//         P1_score.textContent = 0;
+//         P2_score.textContent = 0;
+
+//         P1_total = 0;
+//         P2_total = 0;
+
+//         P1_Ctotal = 0;
+//         P2_Ctotal = 0;
+
+//         playercounter = 0;
+
+//         Current_P1.textContent = "0";
+//         Current_P2.textContent = "0";
+
+
+//         P2_BG.classList.remove("winner");
+//         P1_BG.classList.remove("winner");
+//         Name2.textContent = "Player 2";
+//         Name1.textContent = "Player 1";
+//         P2_BG.classList.remove("player--active");
+//         P1_BG.classList.add("player--active");
+
+//         dicePic.classList.add("none")
+
+//     }
+
+//     else if (P1_Num_Score < 20 || P2_Num_Score < 20) {
+//         msg.textContent = "Complete this game first";
+//         msg.classList.toggle("nbtn");
+//         msg.classList.toggle("none");
+//         blurBG.classList.toggle("overlay");
+//     }
+
+
+// });
+
+// blurBG.addEventListener("click", function () {
+//     msg.classList.toggle("nbtn");
+//     msg.classList.toggle("none");
+//     blurBG.classList.toggle("overlay");
+// });
+
+
+
+
